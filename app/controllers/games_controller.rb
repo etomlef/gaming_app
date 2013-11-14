@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = ["Secret Number"]
+    @games = ["Secret Number", "Rock Paper Scissors"]
   end
 
   def secret_number
@@ -15,5 +15,17 @@ class GamesController < ApplicationController
       render 'lose'
     end
   end
+
+  def rock_paper_scissors_play
+    @app_throw = ["rock", "paper", "scissor"].sample
+    @user_throw = params[:throw].downcase
+      if @user_throw == @app_throw
+      @status = "you win, sucka!"
+    else 
+      @status = "you lose, you...you..."
+    end
+  end
+
+
 
 end
